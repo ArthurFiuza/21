@@ -30,7 +30,7 @@ var cardsScript = document.currentScript;
             imagesUrl: '/blackjack/cards/' // The base URL for the card images, should end with a '/'.
         },
 
-        // Gets the ID of the card, e.g. "KS" for the king of spades.
+        // Getss the ID of the card, e.g. "KS" for the king of spades.
         cid: function (card) {
             var s = card.attr('src');
             return s.substring(s.length - 6, s.length - 4);
