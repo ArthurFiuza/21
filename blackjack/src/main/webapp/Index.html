@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
-<title>Blackjack 21</title>
-<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<title>Blackjack 21</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 	<main class="container">
 		<h1>Blackjack - 21</h1>
@@ -12,7 +14,55 @@
 		<p>Jogo desenvolvido em Java utilizando Servlets, Tomcat e a
 			estrutura de dados Pilha.</p>
 
-		<a href="iniciar" class="botao">Iniciar Jogo</a>
+		<div id="mensagem-erro" class="mensagem-erro"
+			style="display: none; background: rgba(168, 29, 29, 0.85); color: #fff; padding: 12px 20px; border-radius: 50px; margin-bottom: 20px; font-weight: 600; border: 1px solid #7a0f0f; box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+		</div>
+
+		<div class="menu-multiplayer">
+			<!-- Coluna Criar Sala -->
+			<div class="menu-opcao">
+				<h2>Criar Nova Sala</h2>
+				<form action="iniciar" method="get" class="setup-form" style="justify-content: center; flex-grow: 1;">
+					<p style="margin-bottom: 20px; font-size: 0.95rem;">Crie uma sala de Blackjack para até 5 pessoas e jogue em tempo real.</p>
+					<button type="submit" class="botao">Criar Sala</button>
+				</form>
+			</div>
+
+			<div class="menu-divisor"></div>
+
+			<!-- Coluna Entrar na Sala -->
+			<div class="menu-opcao">
+				<h2>Entrar em Sala</h2>
+				<form action="entrar" method="get" class="setup-form">
+					<div class="form-grupo">
+						<label for="codigoSala">Código da Sala:</label>
+						<input type="text" name="codigoSala" id="codigoSala" placeholder="EX: A3F9G1" maxlength="6"
+							required class="input-codigo" oninput="this.value = this.value.toUpperCase()">
+					</div>
+					<button type="submit" class="botao"
+						style="background: linear-gradient(135deg, #a3c4b9, #54776c); color: white;">Entrar</button>
+				</form>
+			</div>
+		</div>
+
+		<script>
+			const params = new URLSearchParams(window.location.search);
+			if (params.has('erro')) {
+				const erro = params.get('erro');
+				const el = document.getElementById('mensagem-erro');
+				el.style.display = 'block';
+				if (erro === 'sala_inexistente') {
+					el.textContent = 'Erro: Sala não encontrada!';
+				} else if (erro === 'sala_cheia') {
+					el.textContent = 'Erro: A sala está cheia!';
+				} else if (erro === 'codigo_invalido') {
+					el.textContent = 'Erro: Código de sala inválido!';
+				} else {
+					el.textContent = 'Erro ao entrar na sala!';
+				}
+			}
+		</script>
 	</main>
 </body>
+
 </html>
