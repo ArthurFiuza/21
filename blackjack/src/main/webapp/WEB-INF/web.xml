@@ -64,7 +64,7 @@
 
   <servlet-mapping>
     <servlet-name>ComprarCartaServlet</servlet-name>
-    <url-pattern>/ComprarCartaServlet</url-pattern>
+    <url-pattern>/comprar</url-pattern>
   </servlet-mapping>
 
   <!-- Servlet para parar -->
@@ -75,7 +75,7 @@
 
   <servlet-mapping>
     <servlet-name>PararServlet</servlet-name>
-    <url-pattern>/PararServlet</url-pattern>
+    <url-pattern>/parar</url-pattern>
   </servlet-mapping>
 
 </web-app>
