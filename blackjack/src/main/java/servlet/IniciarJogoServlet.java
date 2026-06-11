@@ -26,6 +26,6 @@ public class IniciarJogoServlet extends HttpServlet {
 		session.setAttribute("codigoSala", codigoSala);
 		session.setAttribute("playerIndex", playerIndex);
 
-		response.sendRedirect("jogo.jsp");
+		response.sendRedirect(request.getContextPath() + "/jogo.jsp");
 	}
 }

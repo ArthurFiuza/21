@@ -8,7 +8,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>IniciarJogoServlet</servlet-name>
-    <url-pattern>/IniciarJogoServlet</url-pattern>
+    <url-pattern>/iniciar</url-pattern>
   </servlet-mapping>
   <display-name>blackjack</display-name>
   <welcome-file-list>
