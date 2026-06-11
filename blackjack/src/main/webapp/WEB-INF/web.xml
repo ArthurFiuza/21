@@ -13,7 +13,7 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
-  <!-- Servlet para criar sala / iniciar jogo -->
+  <!-- Servlet para criar sala -->
   <servlet>
     <servlet-name>IniciarJogoServlet</servlet-name>
     <servlet-class>servlet.IniciarJogoServlet</servlet-class>
@@ -43,6 +43,17 @@
   <servlet-mapping>
     <servlet-name>EntrarSalaServlet</servlet-name>
     <url-pattern>/EntrarSalaServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Servlet para começar/reiniciar partida -->
+  <servlet>
+    <servlet-name>ComecarJogoServlet</servlet-name>
+    <servlet-class>servlet.ComecarJogoServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ComecarJogoServlet</servlet-name>
+    <url-pattern>/comecar</url-pattern>
   </servlet-mapping>
 
   <!-- Servlet para comprar carta -->
