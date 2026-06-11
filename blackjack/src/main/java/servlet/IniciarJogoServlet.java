@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.JogoBlackjack;
+import model.GerenciadorJogos;
 
 @WebServlet("/iniciar")
 public class IniciarJogoServlet extends HttpServlet {
@@ -16,10 +16,15 @@ public class IniciarJogoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		JogoBlackjack jogo = new JogoBlackjack();
-
 		HttpSession session = request.getSession();
-		session.setAttribute("jogo", jogo);
+		String sessionId = session.getId();
+
+		// Create room and add the creator
+		String codigoSala = GerenciadorJogos.getInstance().criarJogo();
+		int playerIndex = GerenciadorJogos.getInstance().adicionarJogador(codigoSala, sessionId);
+
+		session.setAttribute("codigoSala", codigoSala);
+		session.setAttribute("playerIndex", playerIndex);
 
 		response.sendRedirect("jogo.jsp");
 	}

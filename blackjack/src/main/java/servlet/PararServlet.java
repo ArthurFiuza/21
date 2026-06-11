@@ -17,10 +17,14 @@ public class PararServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		JogoBlackjack jogo = (JogoBlackjack) session.getAttribute("jogo");
+		String codigoSala = (String) session.getAttribute("codigoSala");
+		Integer meuPlayerIndex = (Integer) session.getAttribute("playerIndex");
 
-		if (jogo != null) {
-			jogo.jogadorPara();
+		if (codigoSala != null && meuPlayerIndex != null) {
+			model.JogoBlackjack jogo = model.GerenciadorJogos.getInstance().getJogo(codigoSala);
+			if (jogo != null && !jogo.isJogoFinalizado() && jogo.getJogadorAtualIndex() == meuPlayerIndex) {
+				jogo.jogadorPara();
+			}
 		}
 
 		response.sendRedirect("jogo.jsp");
